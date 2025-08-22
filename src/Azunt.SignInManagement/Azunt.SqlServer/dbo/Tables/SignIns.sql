@@ -1,9 +1,14 @@
-﻿--[0][0] 접속: SignIns 
-CREATE TABLE [dbo].[SignIns]
-(
-    [Id]        BIGINT             IDENTITY (1, 1) NOT NULL PRIMARY KEY,    -- 접속 고유 아이디, 자동 증가
-    [Active]    BIT                DEFAULT ((1)) NULL,                      -- 활성 상태 표시, 기본값 1 (활성)
-    [CreatedAt] DATETIMEOFFSET NULL DEFAULT SYSDATETIMEOFFSET(),            -- 레코드 생성 시간
-    [CreatedBy] NVARCHAR (255)     NULL,                                    -- 레코드 생성자 이름
-    [Name]      NVARCHAR (MAX)     NULL                                     -- 이름
+﻿-- 사용자 로그인 이력 테이블
+CREATE TABLE [dbo].[SignIns] (
+    [Id]               BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY, -- 기본 키(자동 증가)
+    [DateTimeSignedIn] DATETIMEOFFSET(0) NOT NULL,                -- 로그인 시각
+    [UserId]           NVARCHAR(450) NULL,                        -- 사용자 ID
+    [Email]            NVARCHAR(MAX) NOT NULL,                    -- 로그인에 사용된 이메일
+    [FirstName]        NVARCHAR(MAX) NULL,                        -- 이름
+    [LastName]         NVARCHAR(MAX) NULL,                        -- 성
+    [Result]           NVARCHAR(MAX) NOT NULL,                    -- 로그인 결과(예: 성공/실패)
+    [IpAddress]        NVARCHAR(MAX) NULL,                        -- 클라이언트 IP 주소
+    [Note]             NVARCHAR(MAX) NULL,                        -- 비고/메모
+    [TenantId]         BIGINT NULL,                               -- 테넌트 ID (확장용)
+    [TenantName]       NVARCHAR(255) NULL                         -- 테넌트 이름 (확장용)
 );
