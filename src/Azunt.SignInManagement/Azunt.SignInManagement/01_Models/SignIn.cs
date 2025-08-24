@@ -52,7 +52,6 @@ namespace Azunt.SignInManagement
         /// 테넌트 이름 (레거시 미사용 → EF 매핑 제외, 최대 255자).
         /// </summary>
         [MaxLength(255)]
-        [NotMapped]
         public string? TenantName { get; set; }
 
         // --------------------------------------------------------------------
