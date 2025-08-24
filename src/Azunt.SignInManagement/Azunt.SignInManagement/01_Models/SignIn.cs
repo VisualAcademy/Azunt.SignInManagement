@@ -91,5 +91,9 @@ namespace Azunt.SignInManagement
         /// <summary>UTC 기준 로그인 시각(뷰 전용).</summary>
         [NotMapped]
         public DateTime DateTimeSignedInUtc => DateTimeSignedIn.UtcDateTime;
+
+        /// <summary>사용자 타임존 변환 결과 로그인 시각(뷰 전용).</summary>
+        [NotMapped]
+        public DateTime DateTimeSignedInDisplay { get; set; }
     }
 }
